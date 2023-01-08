@@ -7,6 +7,7 @@ import pl.deptala.piotr.onlineshop.repository.entity.ShoppingCartEntity;
 import pl.deptala.piotr.onlineshop.service.mapper.ShoppingCartMapper;
 import pl.deptala.piotr.onlineshop.web.model.ShoppingCartModel;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -55,14 +56,21 @@ public class ShoppingCartService {
     }
 
     // D - delete
-    public void delete() {
-        LOGGER.info("delete()");
-        LOGGER.info("delete(...)");
+    public void delete(Long id) throws ShoppingNotFoundException {
+        LOGGER.info("delete(" + id + ")");
+        Optional<ShoppingCartEntity> optionalShoppingCartEntity = shoppingCartRepository.findById(id);
+        ShoppingCartEntity shoppingCartEntity = optionalShoppingCartEntity.orElseThrow(
+                () -> new ShoppingNotFoundException("Shopping Cart with ID: " + id + " not found"));
+        shoppingCartRepository.delete(shoppingCartEntity);
+        LOGGER.info("delete(...)" + shoppingCartEntity);
     }
 
     // L - list
-    public void list() {
+    public List<ShoppingCartModel> list() {
         LOGGER.info("list()");
-        LOGGER.info("list(...)");
+        List<ShoppingCartEntity> shoppingCartEntities = shoppingCartRepository.findAll();
+        List<ShoppingCartModel> shoppingCartModels = shoppingCartMapper.fromEntities(shoppingCartEntities);
+        LOGGER.info("list(...)" + shoppingCartModels);
+        return shoppingCartModels;
     }
 }
