@@ -49,14 +49,18 @@ public class UserService {
         UserEntity userEntity = userMapper.from(userModel);
         UserEntity savedUserEntity = userRepository.save(userEntity);
         UserModel updateModel = userMapper.from(savedUserEntity);
-        LOGGER.info("update(...)"+updateModel);
+        LOGGER.info("update(...)" + updateModel);
         return updateModel;
     }
 
     // D - delete
-    public void delete() {
-        LOGGER.info("delete()");
-        LOGGER.info("delete(...)");
+    public void delete(Long id) throws UserNotFoundException {
+        LOGGER.info("delete(" + id + ")");
+        Optional<UserEntity> optionalUserEntity = userRepository.findById(id);
+        UserEntity userEntity = optionalUserEntity.orElseThrow(
+                () -> new UserNotFoundException("User with ID: " + id + " not found "));
+        userRepository.delete(userEntity);
+        LOGGER.info("delete(...)" + userEntity);
     }
 
     // L - list
