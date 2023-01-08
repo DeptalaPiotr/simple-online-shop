@@ -45,9 +45,13 @@ public class ShoppingCartService {
     }
 
     // U - update
-    public void update() {
-        LOGGER.info("update()");
-        LOGGER.info("update(...)");
+    public ShoppingCartModel update(ShoppingCartModel shoppingCartModel) {
+        LOGGER.info("update(" + shoppingCartModel + ")");
+        ShoppingCartEntity shoppingCartEntity = shoppingCartMapper.from(shoppingCartModel);
+        ShoppingCartEntity savedEntity = shoppingCartRepository.save(shoppingCartEntity);
+        ShoppingCartModel updateModel = shoppingCartMapper.from(savedEntity);
+        LOGGER.info("update(...)" + updateModel);
+        return updateModel;
     }
 
     // D - delete

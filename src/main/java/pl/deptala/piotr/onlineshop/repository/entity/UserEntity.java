@@ -18,12 +18,6 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public UserEntity(Long id, String name, ShoppingCartEntity shoppingCart, String shippingAddress) {
-        this.id = id;
-        this.name = name;
-        this.shoppingCart = shoppingCart;
-        this.shippingAddress = shippingAddress;
-    }
 
     public Long getId() {
         return id;

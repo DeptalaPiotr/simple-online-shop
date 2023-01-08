@@ -19,11 +19,6 @@ public class ShoppingCartEntity {
     public ShoppingCartEntity() {
     }
 
-    public ShoppingCartEntity(Long id, UserEntity user, List<ProductEntity> products) {
-        this.id = id;
-        this.user = user;
-        this.products = products;
-    }
 
     public Long getId() {
         return id;
