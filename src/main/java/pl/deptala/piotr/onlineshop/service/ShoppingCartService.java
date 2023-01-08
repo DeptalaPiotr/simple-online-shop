@@ -1,22 +1,24 @@
 package pl.deptala.piotr.onlineshop.service;
 
 import org.springframework.stereotype.Service;
+import pl.deptala.piotr.onlineshop.api.exceptions.ShoppingNotFoundException;
 import pl.deptala.piotr.onlineshop.repository.ShoppingCartRepository;
 import pl.deptala.piotr.onlineshop.repository.entity.ShoppingCartEntity;
 import pl.deptala.piotr.onlineshop.service.mapper.ShoppingCartMapper;
 import pl.deptala.piotr.onlineshop.web.model.ShoppingCartModel;
 
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
-public class ShippingCartService {
+public class ShoppingCartService {
 
-    private static final Logger LOGGER = Logger.getLogger(ShippingCartService.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(ShoppingCartService.class.getName());
 
     private ShoppingCartRepository shoppingCartRepository;
     private ShoppingCartMapper shoppingCartMapper;
 
-    public ShippingCartService(ShoppingCartRepository shoppingCartRepository, ShoppingCartMapper shoppingCartMapper) {
+    public ShoppingCartService(ShoppingCartRepository shoppingCartRepository, ShoppingCartMapper shoppingCartMapper) {
         this.shoppingCartRepository = shoppingCartRepository;
         this.shoppingCartMapper = shoppingCartMapper;
     }
@@ -32,9 +34,14 @@ public class ShippingCartService {
     }
 
     // R - read
-    public void read() {
-        LOGGER.info("read()");
-        LOGGER.info("read(...)");
+    public ShoppingCartModel read(Long id) throws ShoppingNotFoundException {
+        LOGGER.info("read(" + id + ")");
+        Optional<ShoppingCartEntity> optionalShoppingCartEntity = shoppingCartRepository.findById(id);
+        ShoppingCartEntity shoppingCartEntity = optionalShoppingCartEntity.orElseThrow(
+                () -> new ShoppingNotFoundException("Shopping Cart with ID: " + id + " not found"));
+        ShoppingCartModel cartModel = shoppingCartMapper.from(shoppingCartEntity);
+        LOGGER.info("read(...)" + cartModel);
+        return cartModel;
     }
 
     // U - update
