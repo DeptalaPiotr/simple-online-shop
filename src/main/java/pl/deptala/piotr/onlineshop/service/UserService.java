@@ -7,6 +7,7 @@ import pl.deptala.piotr.onlineshop.repository.entity.UserEntity;
 import pl.deptala.piotr.onlineshop.service.mapper.UserMapper;
 import pl.deptala.piotr.onlineshop.web.model.UserModel;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -64,8 +65,11 @@ public class UserService {
     }
 
     // L - list
-    public void list() {
+    public List<UserModel> list() {
         LOGGER.info("list()");
-        LOGGER.info("list(...)");
+        List<UserEntity> userEntities = userRepository.findAll();
+        List<UserModel> userModels = userMapper.fromEntities(userEntities);
+        LOGGER.info("list(...)" + userModels);
+        return userModels;
     }
 }
