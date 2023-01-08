@@ -16,7 +16,6 @@ public class ProductEntity {
     public ProductEntity() {
     }
 
-
     public Long getId() {
         return id;
     }
@@ -33,17 +32,17 @@ public class ProductEntity {
         this.name = name;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
     @Override
     public String toString() {
-        return "ProductModel{" +
+        return "ProductEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +
