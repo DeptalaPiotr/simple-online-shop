@@ -1,17 +1,24 @@
-package pl.deptala.piotr.onlineshop.web.model;
+package pl.deptala.piotr.onlineshop.repository.entity;
+
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import pl.deptala.piotr.onlineshop.web.model.ProductModel;
+import pl.deptala.piotr.onlineshop.web.model.UserModel;
 
 import java.util.List;
 
-public class ShoppingCartModel {
+public class ShoppingCartEntity {
 
+    @Id
+    @GeneratedValue
     private Long id;
     private UserModel user;
-    private List<ProductModel> products;
+    private List<ProductEntity> products;
 
-    public ShoppingCartModel() {
+    public ShoppingCartEntity() {
     }
 
-    public ShoppingCartModel(Long id, UserModel user, List<ProductModel> products) {
+    public ShoppingCartEntity(Long id, UserModel user, List<ProductEntity> products) {
         this.id = id;
         this.user = user;
         this.products = products;
@@ -33,17 +40,17 @@ public class ShoppingCartModel {
         this.user = user;
     }
 
-    public List<ProductModel> getProducts() {
+    public List<ProductEntity> getProducts() {
         return products;
     }
 
-    public void setProducts(List<ProductModel> products) {
+    public void setProducts(List<ProductEntity> products) {
         this.products = products;
     }
 
     @Override
     public String toString() {
-        return "ShoppingCartModel{" +
+        return "ShoppingCartEntity{" +
                 "id=" + id +
                 ", user=" + user +
                 ", products=" + products +

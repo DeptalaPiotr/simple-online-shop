@@ -4,13 +4,13 @@ public class UserModel {
 
     private Long id;
     private String name;
-    private ShoppingCartModel shoppingCart;
+    private ShoppingCartEntity shoppingCart;
     private String shippingAddress;
 
     public UserModel() {
     }
 
-    public UserModel(Long id, String name, ShoppingCartModel shoppingCart, String shippingAddress) {
+    public UserModel(Long id, String name, ShoppingCartEntity shoppingCart, String shippingAddress) {
         this.id = id;
         this.name = name;
         this.shoppingCart = shoppingCart;
@@ -33,11 +33,11 @@ public class UserModel {
         this.name = name;
     }
 
-    public ShoppingCartModel getShoppingCart() {
+    public ShoppingCartEntity getShoppingCart() {
         return shoppingCart;
     }
 
-    public void setShoppingCart(ShoppingCartModel shoppingCart) {
+    public void setShoppingCart(ShoppingCartEntity shoppingCart) {
         this.shoppingCart = shoppingCart;
     }
 

@@ -1,24 +1,17 @@
-package pl.deptala.piotr.onlineshop.repository.entity;
-
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import pl.deptala.piotr.onlineshop.web.model.ProductModel;
-import pl.deptala.piotr.onlineshop.web.model.UserModel;
+package pl.deptala.piotr.onlineshop.web.model;
 
 import java.util.List;
 
-public class ShippingCartEntity {
+public class ShoppingCartEntity {
 
-    @Id
-    @GeneratedValue
     private Long id;
     private UserModel user;
     private List<ProductModel> products;
 
-    public ShippingCartEntity() {
+    public ShoppingCartEntity() {
     }
 
-    public ShippingCartEntity(Long id, UserModel user, List<ProductModel> products) {
+    public ShoppingCartEntity(Long id, UserModel user, List<ProductModel> products) {
         this.id = id;
         this.user = user;
         this.products = products;
