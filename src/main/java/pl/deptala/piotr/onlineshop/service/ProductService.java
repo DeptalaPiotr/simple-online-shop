@@ -7,6 +7,7 @@ import pl.deptala.piotr.onlineshop.repository.entity.ProductEntity;
 import pl.deptala.piotr.onlineshop.service.mapper.ProductMapper;
 import pl.deptala.piotr.onlineshop.web.model.ProductModel;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -65,8 +66,11 @@ public class ProductService {
     }
 
     // L - list
-    public void list() {
+    public List<ProductModel> list() {
         LOGGER.info("list()");
-        LOGGER.info("list(...)");
+        List<ProductEntity> productEntities = productRepository.findAll();
+        List<ProductModel> mappedProductModels = productMapper.fromEntities(productEntities);
+        LOGGER.info("list(...) " + mappedProductModels);
+        return mappedProductModels;
     }
 }
