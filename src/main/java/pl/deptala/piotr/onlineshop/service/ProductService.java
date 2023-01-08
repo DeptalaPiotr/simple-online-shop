@@ -45,15 +45,23 @@ public class ProductService {
     }
 
     // U - update
-    public void update() {
-        LOGGER.info("update()");
-        LOGGER.info("update(...)");
+    public ProductModel update(ProductModel updateNote) {
+        LOGGER.info("update(" + updateNote + ")");
+        ProductEntity productEntity = productMapper.from(updateNote);
+        ProductEntity savedEntity = productRepository.save(productEntity);
+        ProductModel productModel = productMapper.from(savedEntity);
+        LOGGER.info("update(...)" + productModel);
+        return productModel;
     }
 
     // D - delete
-    public void delete() {
-        LOGGER.info("delete()");
-        LOGGER.info("delete(...)");
+    public void delete(Long id) throws ProductNotFoundException {
+        LOGGER.info("delete(" + id + ")");
+        Optional<ProductEntity> optionalProductEntity = productRepository.findById(id);
+        ProductEntity productEntity = optionalProductEntity.orElseThrow(
+                () -> new ProductNotFoundException("Product with ID not found " + id));
+        productRepository.delete(productEntity);
+        LOGGER.info("delete(...) " + productEntity);
     }
 
     // L - list
