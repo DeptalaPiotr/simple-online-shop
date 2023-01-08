@@ -2,7 +2,7 @@ package pl.deptala.piotr.onlineshop.repository.entity;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import pl.deptala.piotr.onlineshop.web.model.ShoppingCartModel;
+import pl.deptala.piotr.onlineshop.web.model.ShoppingCartEntity;
 
 public class UserEntity {
 
@@ -10,13 +10,13 @@ public class UserEntity {
     @GeneratedValue
     private Long id;
     private String name;
-    private ShoppingCartModel shoppingCart;
+    private ShoppingCartEntity shoppingCart;
     private String shippingAddress;
 
     public UserEntity() {
     }
 
-    public UserEntity(Long id, String name, ShoppingCartModel shoppingCart, String shippingAddress) {
+    public UserEntity(Long id, String name, ShoppingCartEntity shoppingCart, String shippingAddress) {
         this.id = id;
         this.name = name;
         this.shoppingCart = shoppingCart;
@@ -39,11 +39,11 @@ public class UserEntity {
         this.name = name;
     }
 
-    public ShoppingCartModel getShoppingCart() {
+    public ShoppingCartEntity getShoppingCart() {
         return shoppingCart;
     }
 
-    public void setShoppingCart(ShoppingCartModel shoppingCart) {
+    public void setShoppingCart(ShoppingCartEntity shoppingCart) {
         this.shoppingCart = shoppingCart;
     }
 

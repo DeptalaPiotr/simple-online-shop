@@ -2,16 +2,16 @@ package pl.deptala.piotr.onlineshop.web.model;
 
 import java.util.List;
 
-public class ShoppingCartModel {
+public class ShoppingCartEntity {
 
     private Long id;
     private UserModel user;
     private List<ProductModel> products;
 
-    public ShoppingCartModel() {
+    public ShoppingCartEntity() {
     }
 
-    public ShoppingCartModel(Long id, UserModel user, List<ProductModel> products) {
+    public ShoppingCartEntity(Long id, UserModel user, List<ProductModel> products) {
         this.id = id;
         this.user = user;
         this.products = products;

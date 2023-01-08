@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import pl.deptala.piotr.onlineshop.repository.entity.ShoppingCartEntity;
 
 @Repository
-public interface ShoppingCartRepository extends JpaRepository<ShoppingCartEntity, Long> {
+public interface ShoppingCartRepository extends JpaRepository<ShoppingCartEntity,Long> {
 }

@@ -2,8 +2,7 @@ package pl.deptala.piotr.onlineshop.service.mapper;
 
 import org.springframework.stereotype.Component;
 import org.modelmapper.ModelMapper;
-import pl.deptala.piotr.onlineshop.repository.entity.ShoppingCartEntity;
-import pl.deptala.piotr.onlineshop.web.model.ShoppingCartModel;
+import pl.deptala.piotr.onlineshop.web.model.ShoppingCartEntity;
 
 
 import java.util.List;
@@ -15,34 +14,34 @@ public class ShoppingCartMapper {
 
     private static final Logger LOGGER = Logger.getLogger(ShoppingCartMapper.class.getName());
 
-    public ShoppingCartEntity from(ShoppingCartModel shoppingCartModel) {
+    public pl.deptala.piotr.onlineshop.repository.entity.ShoppingCartEntity from(ShoppingCartEntity shoppingCartModel) {
         LOGGER.info("from()");
         ModelMapper modelMapper = new ModelMapper();
-        ShoppingCartEntity shoppingCartEntity = modelMapper.map(shoppingCartModel, ShoppingCartEntity.class);
+        pl.deptala.piotr.onlineshop.repository.entity.ShoppingCartEntity shoppingCartEntity = modelMapper.map(shoppingCartModel, pl.deptala.piotr.onlineshop.repository.entity.ShoppingCartEntity.class);
         LOGGER.info("from(...)" + shoppingCartEntity);
         return shoppingCartEntity;
     }
 
-    public ShoppingCartModel from(ShoppingCartEntity shoppingCartEntity) {
+    public ShoppingCartEntity from(pl.deptala.piotr.onlineshop.repository.entity.ShoppingCartEntity shoppingCartEntity) {
         LOGGER.info("from(" + shoppingCartEntity + ")");
         ModelMapper modelMapper = new ModelMapper();
-        ShoppingCartModel shoppingCartModel = modelMapper.map(shoppingCartEntity,ShoppingCartModel.class);
+        ShoppingCartEntity shoppingCartModel = modelMapper.map(shoppingCartEntity, ShoppingCartEntity.class);
         LOGGER.info("from(...) = " + shoppingCartModel);
         return shoppingCartModel;
     }
 
-    public List<ShoppingCartModel> fromEntities(List<ShoppingCartEntity> shoppingCartEntities) {
+    public List<ShoppingCartEntity> fromEntities(List<pl.deptala.piotr.onlineshop.repository.entity.ShoppingCartEntity> shoppingCartEntities) {
         LOGGER.info("fromEntities(" + shoppingCartEntities + ")");
-        List<ShoppingCartModel> shoppingCartModels = shoppingCartEntities.stream()
+        List<ShoppingCartEntity> shoppingCartModels = shoppingCartEntities.stream()
                 .map(this::from)
                 .collect(Collectors.toList());
         LOGGER.info("fromEntities(...) = " + shoppingCartModels);
         return shoppingCartModels;
     }
 
-    public List<ShoppingCartEntity> fromModels(List<ShoppingCartModel> shoppingCartModels) {
+    public List<pl.deptala.piotr.onlineshop.repository.entity.ShoppingCartEntity> fromModels(List<ShoppingCartEntity> shoppingCartModels) {
         LOGGER.info("fromModels(" + shoppingCartModels + ")");
-        List<ShoppingCartEntity> shoppingCartEntities = shoppingCartModels.stream()
+        List<pl.deptala.piotr.onlineshop.repository.entity.ShoppingCartEntity> shoppingCartEntities = shoppingCartModels.stream()
                 .map(this::from)
                 .collect(Collectors.toList());
         LOGGER.info("fromModels(...) = " + shoppingCartEntities);
