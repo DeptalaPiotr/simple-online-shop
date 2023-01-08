@@ -33,19 +33,24 @@ public class UserService {
     }
 
     // R - read
-    public void read(Long id) throws UserNotFoundException {
+    public UserModel read(Long id) throws UserNotFoundException {
         LOGGER.info("read(" + id + ")");
         Optional<UserEntity> optionalUserEntity = userRepository.findById(id);
         UserEntity userEntity = optionalUserEntity.orElseThrow(
                 () -> new UserNotFoundException("User with ID:" + id + " not found "));
         UserModel userModel = userMapper.from(userEntity);
         LOGGER.info("read(...)" + userModel);
+        return userModel;
     }
 
     // U - update
-    public void update() {
-        LOGGER.info("update()");
-        LOGGER.info("update(...)");
+    public UserModel update(UserModel userModel) {
+        LOGGER.info("update(" + userModel + ")");
+        UserEntity userEntity = userMapper.from(userModel);
+        UserEntity savedUserEntity = userRepository.save(userEntity);
+        UserModel updateModel = userMapper.from(savedUserEntity);
+        LOGGER.info("update(...)"+updateModel);
+        return updateModel;
     }
 
     // D - delete
