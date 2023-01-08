@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import pl.deptala.piotr.onlineshop.web.model.ProductModel;
-import pl.deptala.piotr.onlineshop.web.model.ShoppingCartEntity;
+import pl.deptala.piotr.onlineshop.web.model.ShoppingCartModel;
 import pl.deptala.piotr.onlineshop.web.model.UserModel;
 
 import java.util.ArrayList;
@@ -36,12 +36,12 @@ class ShoppingCartMapperTest {
         productModels.add(spoon);
         productModels.add(knife);
 
-        ShoppingCartEntity shoppingCartEntity = new ShoppingCartEntity();
+        ShoppingCartModel shoppingCartModel = new ShoppingCartModel();
 //        shoppingCartModel.setUser(piotr);
 //        shoppingCartModel.setProducts(productModels);
 
         // When
-        pl.deptala.piotr.onlineshop.repository.entity.ShoppingCartEntity mappedShoppingCartEntity = shoppingCartMapper.from(shoppingCartEntity);
+        pl.deptala.piotr.onlineshop.repository.entity.ShoppingCartEntity mappedShoppingCartEntity = shoppingCartMapper.from(shoppingCartModel);
 
         // Then
         Assertions.assertNotNull(mappedShoppingCartEntity, "mappedEntity is NULL");
