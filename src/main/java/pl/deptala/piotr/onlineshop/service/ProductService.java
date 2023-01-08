@@ -39,7 +39,7 @@ public class ProductService {
         LOGGER.info("read(" + id + ")");
         Optional<ProductEntity> optionalProductEntity = productRepository.findById(id);
         ProductEntity productEntity = optionalProductEntity.orElseThrow(
-                () -> new ProductNotFoundException("Product with ID not found " + id));
+                () -> new ProductNotFoundException("Product with ID:" + id + " not found "));
         ProductModel mappedProductModel = productMapper.from(productEntity);
         LOGGER.info("read(...) " + mappedProductModel);
         return mappedProductModel;
@@ -60,7 +60,7 @@ public class ProductService {
         LOGGER.info("delete(" + id + ")");
         Optional<ProductEntity> optionalProductEntity = productRepository.findById(id);
         ProductEntity productEntity = optionalProductEntity.orElseThrow(
-                () -> new ProductNotFoundException("Product with ID not found " + id));
+                () -> new ProductNotFoundException("Product with ID:" + id + " not found "));
         productRepository.delete(productEntity);
         LOGGER.info("delete(...) " + productEntity);
     }

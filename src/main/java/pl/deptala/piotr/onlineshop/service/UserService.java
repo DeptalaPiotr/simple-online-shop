@@ -1,11 +1,13 @@
 package pl.deptala.piotr.onlineshop.service;
 
 import org.springframework.stereotype.Service;
+import pl.deptala.piotr.onlineshop.api.exceptions.UserNotFoundException;
 import pl.deptala.piotr.onlineshop.repository.UserRepository;
 import pl.deptala.piotr.onlineshop.repository.entity.UserEntity;
 import pl.deptala.piotr.onlineshop.service.mapper.UserMapper;
 import pl.deptala.piotr.onlineshop.web.model.UserModel;
 
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
@@ -31,9 +33,13 @@ public class UserService {
     }
 
     // R - read
-    public void read() {
-        LOGGER.info("read()");
-        LOGGER.info("read(...)");
+    public void read(Long id) throws UserNotFoundException {
+        LOGGER.info("read(" + id + ")");
+        Optional<UserEntity> optionalUserEntity = userRepository.findById(id);
+        UserEntity userEntity = optionalUserEntity.orElseThrow(
+                () -> new UserNotFoundException("User with ID:" + id + " not found "));
+        UserModel userModel = userMapper.from(userEntity);
+        LOGGER.info("read(...)" + userModel);
     }
 
     // U - update
