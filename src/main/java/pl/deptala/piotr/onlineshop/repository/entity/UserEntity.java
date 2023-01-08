@@ -1,9 +1,11 @@
 package pl.deptala.piotr.onlineshop.repository.entity;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import pl.deptala.piotr.onlineshop.web.model.ShoppingCartEntity;
 
+
+@Entity
 public class UserEntity {
 
     @Id
@@ -57,7 +59,7 @@ public class UserEntity {
 
     @Override
     public String toString() {
-        return "UserModel{" +
+        return "UserEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", shoppingCart=" + shoppingCart +

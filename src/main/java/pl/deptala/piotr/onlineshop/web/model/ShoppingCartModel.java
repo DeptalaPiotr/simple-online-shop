@@ -1,20 +1,16 @@
 package pl.deptala.piotr.onlineshop.web.model;
 
-import java.util.List;
-
-public class ShoppingCartEntity {
+public class ShoppingCartModel {
 
     private Long id;
     private UserModel user;
-    private List<ProductModel> products;
 
-    public ShoppingCartEntity() {
+    public ShoppingCartModel() {
     }
 
-    public ShoppingCartEntity(Long id, UserModel user, List<ProductModel> products) {
+    public ShoppingCartModel(Long id, UserModel user) {
         this.id = id;
         this.user = user;
-        this.products = products;
     }
 
     public Long getId() {
@@ -33,20 +29,11 @@ public class ShoppingCartEntity {
         this.user = user;
     }
 
-    public List<ProductModel> getProducts() {
-        return products;
-    }
-
-    public void setProducts(List<ProductModel> products) {
-        this.products = products;
-    }
-
     @Override
     public String toString() {
-        return "ShoppingCartModel{" +
+        return "ShoppingCartEntity{" +
                 "id=" + id +
                 ", user=" + user +
-                ", products=" + products +
                 '}';
     }
 }

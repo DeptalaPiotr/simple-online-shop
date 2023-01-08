@@ -11,7 +11,7 @@ public class ProductEntity {
     @GeneratedValue
     private Long id;
     private String name;
-    private double price;
+    private Double price;
 
     public ProductEntity() {
     }
