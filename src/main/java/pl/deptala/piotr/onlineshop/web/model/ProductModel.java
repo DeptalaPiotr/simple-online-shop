@@ -11,17 +11,17 @@ public class ProductModel {
     public ProductModel() {
     }
 
-    public ProductModel(long id, String name, double price) {
+    public ProductModel(Long id, String name, Double price) {
         this.id = id;
         this.name = name;
         this.price = price;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -33,11 +33,11 @@ public class ProductModel {
         this.name = name;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
