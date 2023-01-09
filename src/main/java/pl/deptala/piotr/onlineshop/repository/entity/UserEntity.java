@@ -1,8 +1,6 @@
 package pl.deptala.piotr.onlineshop.repository.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 
 @Entity
@@ -12,7 +10,6 @@ public class UserEntity {
     @GeneratedValue
     private Long id;
     private String name;
-    private ShoppingCartEntity shoppingCart;
     private String shippingAddress;
 
     public UserEntity() {
@@ -35,14 +32,6 @@ public class UserEntity {
         this.name = name;
     }
 
-    public ShoppingCartEntity getShoppingCart() {
-        return shoppingCart;
-    }
-
-    public void setShoppingCart(ShoppingCartEntity shoppingCart) {
-        this.shoppingCart = shoppingCart;
-    }
-
     public String getShippingAddress() {
         return shippingAddress;
     }
@@ -56,7 +45,6 @@ public class UserEntity {
         return "UserEntity{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", shoppingCart=" + shoppingCart +
                 ", shippingAddress='" + shippingAddress + '\'' +
                 '}';
     }
