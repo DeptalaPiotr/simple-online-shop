@@ -1,6 +1,9 @@
 package pl.deptala.piotr.onlineshop.repository.entity;
 
-import jakarta.persistence.*;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 
 @Entity

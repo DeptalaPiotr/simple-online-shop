@@ -1,7 +1,7 @@
 package pl.deptala.piotr.onlineshop.repository.entity;
 
+
 import jakarta.persistence.*;
-import pl.deptala.piotr.onlineshop.web.model.UserModel;
 
 import java.util.List;
 
