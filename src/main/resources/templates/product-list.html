@@ -21,9 +21,9 @@
             </tr>
             </thead>
             <tbody>
-<!--            <tr th:if="${products.empty}">-->
-<!--                <td colspan="2"> No Products Available </td>-->
-<!--            </tr>-->
+            <tr th:if="${products.empty}">
+                <td colspan="2"> No Products Available </td>
+            </tr>
             <tr th:each="product : ${products}">
                 <td><span th:text="${product.id}"> Id </span></td>
                 <td><span th:text="${product.name}"> Name </span></td>
@@ -38,9 +38,6 @@
     <div>
         <a href="#" th:href="@{/products/create}" > Create </a>
     </div>
-<!--    <div>-->
-<!--        <a href="#" th:href="@{/notes/random}" > Random Note </a>-->
-<!--    </div>-->
     <div>
         <p>
         </p>
