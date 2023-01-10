@@ -71,9 +71,12 @@ public class ProductController {
     }
 
     // D - delete
-    public void delete() {
-        LOGGER.info("delete()");
+    @GetMapping(value = "/delete/{id}")
+    public String delete(@PathVariable(name = "id") Long id) throws ProductNotFoundException {
+        LOGGER.info("delete(" + id + ")");
+        productService.delete(id);
         LOGGER.info("delete(...)");
+        return "redirect:/products";
     }
 
     // L - list
