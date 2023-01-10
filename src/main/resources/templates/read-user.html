@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Read User </title>
+</head>
+<body>
+<div>
+
+    <h1> Read User </h1>
+
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th> Id </th>
+                <th> User Name </th>
+                <th> Shipping Address </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${readUser}">
+                <td><span th:text="${user.id}"> Id </span></td>
+                <td><span th:text="${user.name}"> User Name </span></td>
+                <td><span th:text="${user.shippingAddress}"> Shipping Address </span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a href="#" th:href="@{/users}" > User List </a>
+    </div>
+</div>
+</body>
+</html>

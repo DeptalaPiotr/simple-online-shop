@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title> Shopping Cart List </title>
+</head>
+
+<body>
+<div>
+  <h1> Shopping Cart List  </h1>
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <th> Id </th>
+        <th> User </th>
+        <th> Products in Cart </th>
+        <th> Read </th>
+        <th> Update </th>
+        <th> Delete </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:if="${listCarts.empty}">
+        <td colspan="2"> No User Available </td>
+      </tr>
+      <tr th:each="cart : ${listCarts}">
+        <td><span th:text="${cart.id}"> Id </span></td>
+        <td><span th:text="${cart.user}"> User </span></td>
+        <td><span th:text="${cart.productModels}"> Products in Cart </span></td>
+        <td><a href="#" th:href="@{/shoppingCart/{id}(id=${cart.id})}" > Read </a></td>
+        <td><a href="#" th:href="@{/shoppingCart/update/{id}(id=${cart.id})}">Update </a></td>
+        <td><a href="#" th:href="@{/shoppingCart/delete/{id}(id=${cart.id})}" >Delete </a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <a href="#" th:href="@{/shoppingCart/create}" > Create </a>
+  </div>
+  <div>
+    <p>
+    </p>
+  </div>
+</div>
+</body>
+</html>

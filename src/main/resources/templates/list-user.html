@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> List of User </title>
+</head>
+
+<body>
+<div>
+    <h1> List of User  </h1>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th> Id </th>
+                <th> User Name </th>
+                <th> Shipping Address </th>
+                <th> Read </th>
+                <th> Update </th>
+                <th> Delete </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:if="${userList.empty}">
+                <td colspan="2"> No User Available </td>
+            </tr>
+            <tr th:each="user : ${userList}">
+                <td><span th:text="${user.id}"> Id </span></td>
+                <td><span th:text="${user.name}"> User Name </span></td>
+                <td><span th:text="${user.shippingAddress}"> Shipping Address </span></td>
+                <td><a href="#" th:href="@{/users/{id}(id=${user.id})}" > Read </a></td>
+                <td><a href="#" th:href="@{/users/update/{id}(id=${user.id})}">Update </a></td>
+                <td><a href="#" th:href="@{/users/delete/{id}(id=${user.id})}" >Delete </a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <a href="#" th:href="@{/users/create}" > Create </a>
+    </div>
+    <div>
+        <p>
+        </p>
+    </div>
+</div>
+</body>
+</html>
