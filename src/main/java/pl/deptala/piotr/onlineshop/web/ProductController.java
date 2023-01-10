@@ -3,8 +3,10 @@ package pl.deptala.piotr.onlineshop.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import pl.deptala.piotr.onlineshop.api.exceptions.ProductNotFoundException;
 import pl.deptala.piotr.onlineshop.service.ProductService;
 import pl.deptala.piotr.onlineshop.web.model.ProductModel;
 
@@ -34,14 +36,19 @@ public class ProductController {
     public String create(ProductModel productModel) {
         LOGGER.info("create(" + productModel + ")");
         ProductModel createdProductModel = productService.create(productModel);
-        LOGGER.info("create(...)"+createdProductModel);
+        LOGGER.info("create(...)" + createdProductModel);
         return "redirect:/products";
     }
 
     // R - read
-    public void read() {
-        LOGGER.info("read()");
-        LOGGER.info("read(...)");
+    @GetMapping(value = "/{id}")
+    public String read(
+            @PathVariable(name = "id") Long id, ModelMap modelMap) throws ProductNotFoundException {
+        LOGGER.info("read(" + id + ")");
+        ProductModel productModel = productService.read(id);
+        modelMap.addAttribute("readProduct", productModel);
+        LOGGER.info("read(...)" + productModel);
+        return "read-product";
     }
 
     // U - update
