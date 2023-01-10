@@ -29,7 +29,7 @@
                 <td><span th:text="${product.name}"> Name </span></td>
                 <td><span th:text="${product.price}"> Price </span></td>
                 <td><a href="#" th:href="@{/products/{id}(id=${product.id})}" > Read </a></td>
-<!--                <td><a href="#" th:href="@{/notes/update/{id}(id=${product.id})}">Update </a></td>-->
+                <td><a href="#" th:href="@{/products/update/{id}(id=${product.id})}">Update </a></td>
 <!--                <td><a href="#" th:href="@{/product/delete/{id}(id=${product.id})}" >Delete </a></td>-->
             </tr>
             </tbody>

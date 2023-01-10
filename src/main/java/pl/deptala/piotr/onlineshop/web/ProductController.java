@@ -52,9 +52,22 @@ public class ProductController {
     }
 
     // U - update
-    public void update() {
-        LOGGER.info("update()");
-        LOGGER.info("update(...)");
+    @GetMapping(value = "/update/{id}")
+    public String updateView(
+            @PathVariable(name = "id") Long id, ModelMap modelMap) throws ProductNotFoundException {
+        LOGGER.info("updateView(" + id + ")");
+        ProductModel readProductModel = productService.read(id);
+        modelMap.addAttribute("updateProduct", readProductModel);
+        LOGGER.info("updateView() " + readProductModel);
+        return "update-product";
+    }
+
+    @PostMapping(value = "/update")
+    public String update(ProductModel productModel) {
+        LOGGER.info("update(" + productModel + ")");
+        ProductModel updateProductModel = productService.update(productModel);
+        LOGGER.info("update(...)" + updateProductModel);
+        return "redirect:/products";
     }
 
     // D - delete
