@@ -86,7 +86,7 @@ public class ProductController {
         List<ProductModel> productModelList = productService.list();
         modelMap.addAttribute("products", productModelList);
         LOGGER.info("list(...) " + productModelList);
-        return "product-list";
+        return "products/product-list";
     }
 
 }

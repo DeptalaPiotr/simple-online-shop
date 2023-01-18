@@ -1,16 +1,13 @@
 package pl.deptala.piotr.onlineshop.web;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.deptala.piotr.onlineshop.api.exceptions.ProductNotFoundException;
 import pl.deptala.piotr.onlineshop.api.exceptions.ShoppingNotFoundException;
 import pl.deptala.piotr.onlineshop.service.ShoppingCartService;
-import pl.deptala.piotr.onlineshop.web.model.ProductModel;
 import pl.deptala.piotr.onlineshop.web.model.ShoppingCartModel;
 
 import java.util.List;
