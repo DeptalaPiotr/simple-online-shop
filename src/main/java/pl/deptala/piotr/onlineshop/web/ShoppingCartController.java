@@ -30,7 +30,7 @@ public class ShoppingCartController {
     public String createView() {
         LOGGER.info("createView()");
         LOGGER.info("createView(...)");
-        return "create-shopping-cart";
+        return "shopping-cart/create-shopping-cart";
     }
 
     @PostMapping
@@ -49,7 +49,7 @@ public class ShoppingCartController {
         ShoppingCartModel readShoppingCartModel = shoppingCartService.read(id);
         modelMap.addAttribute("readCart", readShoppingCartModel);
         LOGGER.info("read(...)" + readShoppingCartModel);
-        return "read-shopping-cart.html";
+        return "shopping-cart/read-shopping-cart.html";
     }
 
     // U - update
@@ -60,7 +60,7 @@ public class ShoppingCartController {
         ShoppingCartModel readShoppingCartModel = shoppingCartService.read(id);
         modelMap.addAttribute("updateProduct", readShoppingCartModel);
         LOGGER.info("updateView() " + readShoppingCartModel);
-        return "update-shopping-cart";
+        return "shopping-cart/update-shopping-cart";
     }
 
     @PostMapping(value = "/update")
@@ -87,6 +87,6 @@ public class ShoppingCartController {
         List<ShoppingCartModel> listCarts = shoppingCartService.list();
         modelMap.addAttribute("listCarts", listCarts);
         LOGGER.info("list(...) " + listCarts);
-        return "shopping-cart-list";
+        return "shopping-cart/shopping-cart-list";
     }
 }

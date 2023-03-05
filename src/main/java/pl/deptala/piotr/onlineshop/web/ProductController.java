@@ -29,7 +29,7 @@ public class ProductController {
     @GetMapping(value = "/create")
     public String createView() {
         LOGGER.info("createView()");
-        return "create-product";
+        return "product/create-product";
     }
 
     @PostMapping
@@ -48,7 +48,7 @@ public class ProductController {
         ProductModel productModel = productService.read(id);
         modelMap.addAttribute("readProduct", productModel);
         LOGGER.info("read(...)" + productModel);
-        return "read-product";
+        return "product/read-product";
     }
 
     // U - update
@@ -59,7 +59,7 @@ public class ProductController {
         ProductModel readProductModel = productService.read(id);
         modelMap.addAttribute("updateProduct", readProductModel);
         LOGGER.info("updateView() " + readProductModel);
-        return "update-product";
+        return "product/update-product";
     }
 
     @PostMapping(value = "/update")
@@ -86,7 +86,7 @@ public class ProductController {
         List<ProductModel> productModelList = productService.list();
         modelMap.addAttribute("products", productModelList);
         LOGGER.info("list(...) " + productModelList);
-        return "products/product-list";
+        return "product/product-list";
     }
 
 }
