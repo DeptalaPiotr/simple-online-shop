@@ -30,7 +30,7 @@ public class UserController {
     public String createView() {
         LOGGER.info("createView()");
         LOGGER.info("createView(...)");
-        return "create-user";
+        return "user/create-user";
     }
 
     @PostMapping()
@@ -48,7 +48,7 @@ public class UserController {
         UserModel readUserModel = userService.read(id);
         modelMap.addAttribute("readUser", readUserModel);
         LOGGER.info("read(...) " + readUserModel);
-        return "read-user";
+        return "user/read-user";
     }
 
     // U - update
@@ -58,7 +58,7 @@ public class UserController {
         UserModel readUserToUpdate = userService.read(id);
         modelMap.addAttribute("updateUser", readUserToUpdate);
         LOGGER.info("updateView(...) " + readUserToUpdate);
-        return "update-user";
+        return "user/update-user";
     }
 
     @PostMapping(value = "/update")
@@ -85,6 +85,6 @@ public class UserController {
         List<UserModel> userModels = userService.list();
         modelMap.addAttribute("userList", userModels);
         LOGGER.info("list(...) " + userModels);
-        return "list-user";
+        return "user/list-user";
     }
 }
